@@ -104,6 +104,18 @@
   .bake .meta { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 14px; font-size: 13px; color: var(--ink-soft); }
   .bake .meta b { color: var(--ink); font-weight: 700; }
 
+  /* ---------- tabs ---------- */
+  .tabs { display: flex; gap: 8px; margin-top: 26px; }
+  .tab {
+    font: inherit; font-size: 14px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    padding: 10px 20px; border-radius: 999px; cursor: pointer;
+    background: var(--chip-bg); color: var(--ink-soft); border: 1px solid var(--border);
+  }
+  .tab[aria-selected="true"] { background: var(--accent); color: var(--ground); border-color: var(--accent); }
+  .tab:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .shelf .bake[hidden] { display: none; }
+  .shelf { margin-top: 20px; }
+
   /* ---------- house rules ---------- */
   .house { margin-top: 34px; background: var(--note-bg); border-left: 4px solid var(--note-edge); border-radius: 4px; padding: 20px 24px; }
   .house h2 { font-family: var(--display); font-weight: 500; font-size: 21px; margin-bottom: 10px; }
@@ -203,92 +215,96 @@
     <hr class="rule">
   </header>
 
+  <div class="tabs" role="tablist" aria-label="Recipe sections">
+    <button type="button" class="tab" role="tab" data-tab="baking" aria-selected="true">Baking</button>
+    <button type="button" class="tab" role="tab" data-tab="cooking" aria-selected="false">Cooking</button>
+  </div>
   <div class="shelf">
-    <a class="bake" href="#challah">
+    <a class="bake" data-cat="baking" href="#challah">
       <span class="photo card-photo p-challah-bbc" role="img" aria-label="Our own baked challah, glazed and scattered with sesame"></span>
       <span class="kind">Bread · BBC Good Food</span>
       <h2>Challah</h2>
       <p class="blurb">The Friday plait — enriched with egg and oil, golden crust, 18–20 slices.</p>
       <div class="meta"><span><b>≈20 min</b> hands-on</span><span><b>1 h 40</b> rising</span><span><b>25–30 min</b> bake</span></div>
     </a>
-    <a class="bake" href="#cloud-challah">
+    <a class="bake" data-cat="baking" href="#cloud-challah">
       <span class="photo card-photo p-challah-ours" role="img" aria-label="Challah from our kitchen — stand-in photo until these are baked"></span>
       <span class="kind">Bread · mako, Keren Agam</span>
       <h2>Cloud Challahs</h2>
       <p class="blurb">Two soft, barely-sweet plaits — cold-water dough, one Magimix batch.</p>
       <div class="meta"><span><b>≈25 min</b> hands-on</span><span><b>2½–3 h</b> rising</span><span><b>25–35 min</b> bake</span></div>
     </a>
-    <a class="bake" href="#babka">
+    <a class="bake" data-cat="baking" href="#babka">
       <span class="photo card-photo p-babka" role="img" aria-label="Sliced chocolate babka"></span>
       <span class="kind">Enriched loaf · Paul Hollywood</span>
       <h2>Chocolate Babka</h2>
       <p class="blurb">Dark-chocolate twist in a 900g tin, soaked in syrup. Nut-free.</p>
       <div class="meta"><span><b>≈30 min</b> hands-on</span><span><b>≈2 h</b> prove</span><span><b>40–45 min</b> bake</span></div>
     </a>
-    <a class="bake" href="#next-level-babka">
+    <a class="bake" data-cat="baking" href="#next-level-babka">
       <span class="photo card-photo p-nextlevel" role="img" aria-label="Next-level chocolate babka loaf"></span>
       <span class="kind">Enriched loaf · BBC Good Food</span>
       <h2>Next-Level Chocolate Babka</h2>
       <p class="blurb">The overnight one — almond-chocolate paste, sharp fridge-cold layers. Contains almonds.</p>
       <div class="meta"><span><b>≈30 min</b> hands-on</span><span><b>overnight</b> chill</span><span><b>≈45 min</b> bake</span></div>
     </a>
-    <a class="bake" href="#biscuit-cake">
+    <a class="bake" data-cat="baking" href="#biscuit-cake">
       <span class="photo card-photo p-biscuit" role="img" aria-label="A square of layered biscuit cake"></span>
       <span class="kind">No-bake · mako, Esti Rotem</span>
       <h2>Biscuit Cake</h2>
       <p class="blurb">The nostalgic Israeli classic — biscuits dipped in coffee-laced milk, vanilla cream, grated chocolate top.</p>
       <div class="meta"><span><b>≈20 min</b> hands-on</span><span><b>3 hr+</b> chill</span><span><b>no</b> oven</span></div>
     </a>
-    <a class="bake" href="#pancakes">
+    <a class="bake" data-cat="cooking" href="#pancakes">
       <span class="photo card-photo p-pancakes" role="img" aria-label="A stack of banana oatmeal pancakes with syrup and banana slices"></span>
       <span class="kind">Breakfast · Ambitious Kitchen</span>
       <h2>Banana Oatmeal Pancakes</h2>
       <p class="blurb">Blender pancakes — ripe bananas, oats, cinnamon. Gluten-free-able, freezer-friendly. Contains almond milk.</p>
       <div class="meta"><span><b>10 min</b> prep</span><span><b>10 min</b> cook</span><span><b>makes 9</b> · serves 3</span></div>
     </a>
-    <a class="bake" href="#chocolate-cake">
+    <a class="bake" data-cat="baking" href="#chocolate-cake">
       <span class="photo card-photo p-danielamit" role="img" aria-label="Our own chocolate cake, flooded with ganache"></span>
       <span class="kind">Chocolate cake · Daniel Amit, foody</span>
       <h2>Crazy Chocolate Cake</h2>
       <p class="blurb">The birthday one — insanely moist, flooded with ganache, sprinkles on top.</p>
       <div class="meta"><span><b>≈20 min</b> hands-on</span><span><b>40–45 min</b> bake</span><span><b>serves 12</b></span></div>
     </a>
-    <a class="bake" href="#traybake">
+    <a class="bake" data-cat="baking" href="#traybake">
       <span class="photo card-photo p-traybake" role="img" aria-label="Squares of chocolate traybake with swirled frosting and shaved chocolate"></span>
       <span class="kind">Traybake · Guardian Feast, Benjamina Ebuehi</span>
       <h2>Double Chocolate &amp; Mascarpone Traybake</h2>
       <p class="blurb">One-bowl, velvety crumb, milk-chocolate mascarpone frosting. Family verdict: "Very nice cake!"</p>
       <div class="meta"><span><b>20 min</b> prep</span><span><b>40 min</b> cook</span><span><b>serves 16</b></span></div>
     </a>
-    <a class="bake" href="#hummus">
+    <a class="bake" data-cat="cooking" href="#hummus">
       <span class="photo card-photo p-hummus" role="img" aria-label="Our own hummus — whole chickpeas, olive oil and a dusting of cumin, with a challah behind"></span>
       <span class="kind">Dip · 10 Dakot, Efrat Siachi</span>
       <h2>Homemade Hummus</h2>
       <p class="blurb">Ten-minute food-processor hummus from one UK tin of chickpeas — raw tahini, lemon, one garlic clove. Contains sesame.</p>
       <div class="meta"><span><b>10 min</b> hands-on</span><span><b>no</b> oven</span><span><b>1 big bowl</b></span></div>
     </a>
-    <a class="bake" href="#oven-chicken">
+    <a class="bake" data-cat="cooking" href="#oven-chicken">
       <span class="photo card-photo p-chicken" role="img" aria-label="Chicken thighs and drumsticks with chickpeas, carrots and potatoes in a red sauce, in a blue cast-iron pot"></span>
       <span class="kind">Dinner · 160cal.com, Revital Federbush</span>
       <h2>Sticky Oven Chicken</h2>
       <p class="blurb">Four-ingredient sauce — tomato purée, soy, silan, garlic. No frying, two hours mostly unattended. Contains soya.</p>
       <div class="meta"><span><b>≈10 min</b> hands-on</span><span><b>2 h + 10</b> oven</span><span><b>serves 5</b></span></div>
     </a>
-    <a class="bake" href="#chicken-leek-gratin">
+    <a class="bake" data-cat="cooking" href="#chicken-leek-gratin">
       <span class="photo card-photo p-gratin" role="img" aria-label="Chicken, leek and cider gratin under golden sliced potatoes in an oval pan"></span>
       <span class="kind">Dinner · BBC Food, Rick Stein</span>
       <h2>Chicken, Leek &amp; Cider Gratin</h2>
       <p class="blurb">Rick Stein's Cornish gratin — chicken thighs and leeks in a cider, mustard and cream sauce under thin potatoes and cheddar. Contains milk, mustard, soya.</p>
       <div class="meta"><span><b>≈30 min</b> hands-on</span><span><b>30 min</b> oven</span><span><b>serves 4</b></span></div>
     </a>
-    <a class="bake" href="#malaysian-noodles">
+    <a class="bake" data-cat="cooking" href="#malaysian-noodles">
       <span class="photo card-photo p-malaysian" role="img" aria-label="Giraffe's Malaysian: green pesto-coated egg noodles with cucumber and red pepper strips, crushed peanuts piled on top, in a grey bowl"></span>
       <span class="kind">Dinner · Dana Moyal Reicher</span>
       <h2>Giraffe Malezit</h2>
       <p class="blurb">Egg noodles, roast chicken and crunchy veg in a basil, coriander, red-curry and fried-peanut pesto with coconut cream. Contains peanuts, wheat, egg — check the curry paste for shrimp or fish.</p>
       <div class="meta"><span><b>20 min</b> chicken in the oven</span><span><b>minutes</b> in the wok</span><span><b>medium egg</b> noodles</span></div>
     </a>
-    <a class="bake" href="#filipinit">
+    <a class="bake" data-cat="cooking" href="#filipinit">
       <span class="photo card-photo p-filipinit" role="img" aria-label="Spicy Filipinit: orange coconut-curry egg noodles with chicken and spring onion, topped with fresh coriander, in a grey bowl"></span>
       <span class="kind">Dinner · Giraffe, via Ruth Sirkis</span>
       <h2>Giraffe Filipinit</h2>
@@ -986,7 +1002,7 @@
       <h3>Method</h3>
       <ol class="method">
         <li><span class="step-name">Chicken</span><span class="step-body">Season the breast with olive oil, salt and pepper and roast at <b>180C</b> for <b>about 20 minutes</b>, until fully cooked — no pink in the middle and the juices run clear (with a probe, UK FSA: <b>75C</b> in the thickest part). Slice into strips.</span></li>
-        <li><span class="step-name">Noodles</span><span class="step-body">M&amp;S pack, stir-fry method: put the noodles into <b>boiling water</b>, take the pan <b>off the heat</b> and leave them to soak for <b>5 minutes</b>, stirring often to separate. Drain. Then, as the recipe says, <b>rinse them</b> and gently separate them with your hands so they don't clump.</span></li>
+        <li><span class="step-name">Noodles</span><span class="step-body">M&amp;S pack, stir-fry method: put the noodles into <b>boiling water</b>, take the pan <b>off the heat</b> and leave them to soak for <b>5 minutes</b>, stirring often to separate. Drain. Then, as the recipe says, <b>rinse them</b> and gently separate them with your hands.</span></li>
         <li><span class="step-name">Pesto</span><span class="step-body">Blitz all the pesto ingredients in the <b>Magimix</b> or a blender. Do it <b>last, right before the wok</b> — the basil darkens if the pesto sits (Oz Telem's tip from his version of this dish).</span></li>
         <li><span class="step-name">Onion</span><span class="step-body">Heat neutral oil in the wok and add the onion. Pour in the <b>200ml coconut cream</b> from the stir-fry list and cook over a <b>medium heat for 1 minute</b>. No need to sear it — just cooking it a little in the coconut cream gives it the sweetness that is typical of the dish.</span></li>
         <li><span class="step-name">Pesto in</span><span class="step-body">Add the pesto and <b>turn the heat up</b>. Stir for a few seconds. (House note: just until it bubbles — see the coconut-cream note.)</span></li>
@@ -1064,6 +1080,17 @@
 
 <script>
   var views = document.querySelectorAll('.view');
+  var tabs = document.querySelectorAll('.tab');
+  function showTab(name) {
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.dataset.tab === name ? 'true' : 'false'); });
+    document.querySelectorAll('.shelf .bake').forEach(function (c) { c.hidden = c.dataset.cat !== name; });
+    try { localStorage.setItem('cookbook-tab', name); } catch (e) {}
+  }
+  tabs.forEach(function (t) { t.addEventListener('click', function () { showTab(t.dataset.tab); }); });
+  var saved = 'baking';
+  try { saved = localStorage.getItem('cookbook-tab') || 'baking'; } catch (e) {}
+  showTab(saved === 'cooking' ? 'cooking' : 'baking');
+
   function route() {
     var id = location.hash.replace('#', '') || 'home';
     var found = false;
